@@ -1,5 +1,7 @@
 # Lecture Scraping
-scrap all courses of National Taiwan University and implement a simple search engine
+Scrap all courses of National Taiwan University and implement a simple search engine. 
+
+Implement the python search engine to a Django framework.
 
 ## Additional features
 1. search with classrooms
@@ -26,6 +28,7 @@ python3 src/lecture_scrap.py 108-2 results/all_lectures.xlsx
 ```
 
 ### Search for lectures
+#### Commandline search
 ```bash
 python3 src/lecture_search.py <lectures_fname>
 ```
@@ -34,3 +37,8 @@ python3 src/lecture_search.py <lectures_fname>
 press `enter` for example input format
 
 type `quit` to exit the program
+
+#### Django web search
+```bash
+python3 django_web/manage.py runserver
+```

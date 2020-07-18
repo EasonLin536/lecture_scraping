@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+    {% if object.department %}<li>{{ object.department }}</li>{% endif %}
+    <li>{{ object.number }}</li>
+    <li>{{ object.name }}</li>
+    <li>{{ object.teacher }}</li>
+    <li>{{ object.time_and_room }}</li>
+    <li>{{ object.remark }}</li>
+</ul>
+{% endblock %} 

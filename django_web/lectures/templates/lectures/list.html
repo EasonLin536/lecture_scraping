@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table width="100%" border="1">
+    <tr bgcolor="#DDEDFF" align="center">
+        <td width="7%">授課對象</td>
+        <td width="7%">課號</td>
+        <td width="20%">課程名稱</td>
+        <td width="10%">授課教師</td>
+        <td width="26%">時間/教室</td>
+        <td width="30%">備註</td>
+    </tr>
+    {% for instance in object_list %}
+    <tr align="center">
+        <td>{{ instance.department }}</td>
+        <td>{{ instance.number }}</td>
+        <td><a href="{{ instance.get_absolute_url }}">{{ instance.name }}</a></td>
+        <td>{{ instance.teacher }}</td>
+        <td>{{ instance.time_and_room }}</td>
+        <td align="left">{{ instance.remark }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
