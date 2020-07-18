@@ -42,3 +42,10 @@ type `quit` to exit the program
 ```bash
 python3 django_web/manage.py runserver
 ```
+implement the commandline search above to a Django framework
+
+`All` list all lectures of NTU
+
+`Search` the same usage as commandline search
+
+`About` little things about me
