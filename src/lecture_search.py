@@ -2,9 +2,10 @@ import sys
 import openpyxl
 
 # lecture file
-wb = openpyxl.load_workbook('all_lecture.xlsx')
+wb = openpyxl.load_workbook(sys.argv[1])
 ws = wb.active
-outfile = openpyxl.load_workbook('results.xlsx')
+outfile = openpyxl.load_workbook(sys.argv[2])
+
 
 # Clear outfile
 def clear_excel():
