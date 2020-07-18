@@ -4,21 +4,21 @@ import openpyxl
 # lecture file
 wb = openpyxl.load_workbook(sys.argv[1])
 ws = wb.active
-outfile = openpyxl.load_workbook(sys.argv[2])
+# outfile = openpyxl.load_workbook(sys.argv[2])
 
 
 # Clear outfile
-def clear_excel():
-    for sheet in outfile.sheetnames:
-        del outfile[sheet]
+# def clear_excel():
+#     for sheet in outfile.sheetnames:
+#         del outfile[sheet]
 
 
 # Create outfile sheet
-def create_sheet():
-    sheet_name = "results"
-    outfile.create_sheet(sheet_name)
-    ws = outfile[sheet_name]
-    ws.append(["授課對象", "課名", "課名", "授課教師", "時間教室", "備註"])
+# def create_sheet():
+#     sheet_name = "results"
+#     outfile.create_sheet(sheet_name)
+#     ws = outfile[sheet_name]
+#     ws.append(["授課對象", "課名", "課名", "授課教師", "時間教室", "備註"])
 
 
 # Process command
@@ -26,7 +26,7 @@ def command():
     cmd = input("search>> ")
     if cmd == "quit": return False
     elif cmd == "": 
-        print("example: [-de 電機] [-nu EE1] [-na 電磁學一] [-te 江衍偉] [-ti <一>6,7,8,9] [-ro 電二225] [-re 兼通識]")
+        print("example: [-de 電機] [-nu EE1] [-na 電磁學一] [-te 江衍偉] [-ti 一6,7,8,9] [-ro 電二225] [-re 兼通識]")
         print("type \"quit\" to exit program")
         return
     tokens = cmd.split()
@@ -84,8 +84,8 @@ def print_class(row):
     remarks = ws["F{}".format(row)].value
         
     print("{} {} {} {} {} {}".format(department, number, name, teacher, time_and_room, remarks))
-    outsheet = outfile.active
-    outsheet.append([department, number, name, teacher, time_and_room, remarks])
+    # outsheet = outfile.active
+    # outsheet.append([department, number, name, teacher, time_and_room, remarks])
 
 
 # Functions for search time
@@ -194,10 +194,9 @@ def search(department, number, name, teacher, time, room, remark):
 
 def main():
     while True:
-        clear_excel()
-        create_sheet()
+        # clear_excel()
+        # create_sheet()
         if command() is False: sys.exit(0)
-        outfile.save('results.xlsx')
 
 
 main()
