@@ -12,13 +12,15 @@ url = "http://nol.ntu.edu.tw/nol/coursesearch/search_result.php"
 file_name = sys.argv[2]
 
 wb = Workbook()
+ws = wb.active
+ws.append(["授課對象", "課號", "課名", "授課教師", "時間教室", "備註"])
 
 
-def create_sheet(day):
-    sheet_name = "lecture sheet"
-    wb.create_sheet(sheet_name)
-    ws = wb[sheet_name]
-    ws.append(["授課對象", "課號", "課名", "授課教師", "時間教室", "備註"])
+# def create_sheet(day):
+#     sheet_name = "lecture sheet"
+#     wb.create_sheet(sheet_name)
+#     ws = wb[sheet_name]
+#     ws.append(["授課對象", "課號", "課名", "授課教師", "時間教室", "備註"])
 
 
 
@@ -48,7 +50,7 @@ def scraping(day):
     table = soup.find_all("table")[6]
     columns = table.find_all("tr")
 
-    ws = wb["lecture sheet"]
+    # ws = wb["lecture sheet"]
     if num_of_class > page_cnt:
         num_of_class = page_cnt
     print("Scraping " + str(num_of_class) + " classes")
@@ -68,7 +70,7 @@ def scraping(day):
         
 
 def main():
-    create_sheet(0)
+    # create_sheet(0)
     for day in range(1,6):
         print("day:" + str(day))
         scraping(day)    

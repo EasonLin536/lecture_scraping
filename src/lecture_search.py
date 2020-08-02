@@ -3,7 +3,7 @@ import openpyxl
 
 # lecture file
 wb = openpyxl.load_workbook(sys.argv[1])
-ws = wb["lecture sheet"]
+ws = wb.active
 # outfile = openpyxl.load_workbook(sys.argv[2])
 
 
