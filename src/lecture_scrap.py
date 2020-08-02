@@ -1,22 +1,17 @@
+import sys
 import requests
 import webbrowser
 from bs4 import BeautifulSoup
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 import time
 
-# modify variables
-page_cnt = 3000
-sem = '108-2'
-
 # Global variables
+page_cnt = 3000
+sem = sys.argv[1]
 url = "http://nol.ntu.edu.tw/nol/coursesearch/search_result.php"
-file_name = 'all_lecture.xlsx'
-wb = load_workbook(file_name)
+file_name = sys.argv[2]
 
-
-def clear_excel():
-    for sheet in wb.sheetnames:
-        del wb[sheet]
+wb = Workbook()
 
 
 def create_sheet(day):
@@ -25,11 +20,6 @@ def create_sheet(day):
     ws = wb[sheet_name]
     ws.append(["授課對象", "課號", "課名", "授課教師", "時間教室", "備註"])
 
-
-def open_sheet(day):
-    sheet_name = "day " + str(day) + " lecture sheet"
-    ws = wb[sheet_name]
-    return ws
 
 
 def get_url(day):
@@ -58,7 +48,7 @@ def scraping(day):
     table = soup.find_all("table")[6]
     columns = table.find_all("tr")
 
-    ws = wb.active
+    ws = wb["lecture sheet"]
     if num_of_class > page_cnt:
         num_of_class = page_cnt
     print("Scraping " + str(num_of_class) + " classes")
@@ -78,7 +68,6 @@ def scraping(day):
         
 
 def main():
-    clear_excel()
     create_sheet(0)
     for day in range(1,6):
         print("day:" + str(day))
